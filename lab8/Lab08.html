@@ -11,7 +11,7 @@
     <div class="container">
         <div class="wrap" style="left: -600px;">
             <img src="5.jpg" alt="5">
-            <img src="1.jpg" alt="1">
+            <img src="1.jpg" alt="1" id="img1" onmouseout="startPicture()" onmouseover="overPicture()">
             <img src="2.jpg" alt="2">
             <img src="3.jpg" alt="3">
             <img src="4.jpg" alt="4">
@@ -19,15 +19,16 @@
             <img src="1.jpg" alt="1">
         </div>
         <div class="buttons">
-            <span class="on">1</span>
-            <span>2</span>
-            <span>3</span>
-            <span>4</span>
-            <span>5</span>
+            <span class="on" onclick="cut_over(1)">1</span>
+            <span onclick="cut_over(2)">2</span>
+            <span onclick="cut_over(3)">3</span>
+            <span onclick="cut_over(4)">4</span>
+            <span onclick="cut_over(5)">5</span>
         </div>
-        <a href="javascript:" class="arrow arrow_left">&lt;</a>
-        <a href="javascript:" class="arrow arrow_right">&gt;</a>
+        <a href="javascript:" class="arrow arrow_left" id="prev">&lt;</a>
+        <a href="javascript:" class="arrow arrow_right" id="next">&gt;</a>
     </div>
+    <div id="div1">
     <table border="1">
         <tr>
             <th>景区</th>
@@ -55,6 +56,7 @@
             <td>4.1</td>
         </tr>
     </table>
+    </div>
 </div>
 <script type="text/javascript" src="jquery-3.3.1.min.js"></script>
 <script src="Lab08.js"></script>

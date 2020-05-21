@@ -3,7 +3,18 @@
 /********************************************begin************************************/
 
 /*Global Variable Area */
-
+var pt = 1;
+var t1;
+var a;
+var b = 0;
+var c = 0;
+var img1 = document.getElementById("img1");
+var prev1 = document.getElementById("prev");
+var next1 = document.getElementById("next");
+prev1.addEventListener('click',prevPicture);
+next1.addEventListener('click',nextPicture);
+var span1 = document.getElementsByTagName("span");
+var td1 = document.getElementsByTagName("td");
 /*********************************************end*************************************/
 
 
@@ -21,7 +32,64 @@
  * ⑤本部分只能使用原生JS。
  */
 /********************************************begin************************************/
-
+function prevPicture() {
+    switch (pt) {
+        case 1:img1.setAttribute("src","5.jpg");
+        span1[0].classList.remove("on");
+        span1[4].classList.add("on");
+            pt = 5;
+            break;
+        case 2:img1.setAttribute("src","1.jpg");
+            span1[1].classList.remove("on");
+            span1[0].classList.add("on");
+            pt--;
+            break;
+        case 3:img1.setAttribute("src","2.jpg");
+            span1[2].classList.remove("on");
+            span1[1].classList.add("on");
+            pt--;
+            break;
+        case 4:img1.setAttribute("src","3.jpg");
+            span1[3].classList.remove("on");
+            span1[2].classList.add("on");
+            pt--;
+            break;
+        case 5:img1.setAttribute("src","4.jpg");
+            span1[4].classList.remove("on");
+            span1[3].classList.add("on");
+            pt--;
+            break;
+    }
+}
+function nextPicture() {
+    switch (pt) {
+        case 1:img1.setAttribute("src","2.jpg");
+            span1[0].classList.remove("on");
+            span1[1].classList.add("on");
+            pt++;
+            break;
+        case 2:img1.setAttribute("src","3.jpg");
+            span1[1].classList.remove("on");
+            span1[2].classList.add("on");
+            pt++;
+            break;
+        case 3:img1.setAttribute("src","4.jpg");
+            span1[2].classList.remove("on");
+            span1[3].classList.add("on");
+            pt++;
+            break;
+        case 4:img1.setAttribute("src","5.jpg");
+            span1[3].classList.remove("on");
+            span1[4].classList.add("on");
+            pt++;
+            break;
+        case 5:img1.setAttribute("src","1.jpg");
+            span1[4].classList.remove("on");
+            span1[0].classList.add("on");
+            pt = 1;
+            break;
+    }
+}
 /*Code Here*/
 
 /*********************************************end*************************************/
@@ -38,7 +106,12 @@
  * ⑤本部分只能使用原生JS。
  */
 /********************************************begin************************************/
-
+function startPicture() {
+      t1 = window.setInterval("nextPicture()",2000);
+}
+function overPicture() {
+     clearInterval(t1);
+}
 /*Code Here*/
 
 /*********************************************end*************************************/
@@ -53,7 +126,17 @@
  * ③本部分只能使用原生JS。
  */
 /********************************************begin************************************/
-
+function cut_over(a) {
+    this.a = a;
+    img1.setAttribute("src",a+".jpg");
+    while(b < span1.length){
+        span1[b].classList.remove("on");
+        b++;
+    }
+    b = 0;
+    span1[a-1].classList.add("on");
+    pt = a;
+}
 /*Code Here*/
 
 /*********************************************end*************************************/
@@ -67,7 +150,26 @@
  * ③本部分可以使用jQuery，也可以使用原生JS。
  */
 /********************************************begin************************************/
+while(c < td1.length){
+    td1[c].setAttribute("onclick","changeElement(this)");
+    c++;
+}
+function changeElement(element) {
+    var oldNode = element.innerHTML;
+    var obj1 = document.createElement('input');
+    obj1.type = 'text';
+    obj1.value = oldNode;
+    obj1.onblur = function() {
+        element.innerHTML = this.value === oldNode ? oldNode : this.value;
+        element.setAttribute("onclick", "changeElement(this);");
+    }
+    element.innerHTML = '';
+    element.appendChild(obj1);
+    obj1.setSelectionRange(0, 0/*oldNode.length*/);
+    obj1.focus();
+    obj1.parentNode.setAttribute("onclick", "");
 
+}
 /*Code Here*/
 
 /*********************************************end*************************************/
