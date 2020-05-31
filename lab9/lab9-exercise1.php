@@ -9,9 +9,24 @@
 <h1>PHP section (inside &lt;?php ... ?&gt; tags)</h1>
 <?php
 //this is a php comment IN tags (will not appear)
-echo "This was output using PHP";
-echo "<br>"; //notice we must echo tags in php.
+date_default_timezone_set("PRC");
+//echo "This was output using PHP";
+//echo "<br>"; //notice we must echo tags in php.
+//echo "This page was generated: " . date("M dS, Y");
+//echo "This page was generated: " .date("M dS, Y") ."<hr/>";
 
+//$d = date("M dS, Y");
+//echo "This page was generated: " . $d . "<hr/>";
+
+//$date = date("M dS, Y");
+//echo "This page was generated: " . $date . "<hr/>";
+//echo "This page was generated: " . date("l, F dS, Y H:i:s")."<hr/>";
+
+//$remaining = 365-date("z");
+//echo "There are ". $remaining . " days left in the year";
+
+$remaining1 = 365+date("L")-date("z");
+echo "There are ". $remaining1 . " days left in the year";
 ?>
 </body>
 </html>
